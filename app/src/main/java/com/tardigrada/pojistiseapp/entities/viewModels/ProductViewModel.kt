@@ -17,6 +17,7 @@ class ProductViewModel(application: Application): AndroidViewModel(application) 
     init {
         val productDao = AppDatabase.getInstance(application).productDao
         productRepository = ProductRepository(productDao)
+        suspend { readAllData() }
         // readAllProductsData = productRepository.readAllProducts()
     }
 
@@ -24,5 +25,9 @@ class ProductViewModel(application: Application): AndroidViewModel(application) 
         viewModelScope.launch(Dispatchers.IO) {
             productRepository.addProduct(product)
         }
+    }
+
+    suspend fun readAllData(): List<Product> {
+        return productRepository.readAllProducts()
     }
 }

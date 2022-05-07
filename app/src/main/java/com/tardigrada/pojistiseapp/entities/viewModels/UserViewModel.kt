@@ -16,7 +16,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     init {
         val userDao = AppDatabase.getInstance(application).userDao
         userRepository = UserRepository(userDao)
-        // suspend { readAllData() }
+        suspend { readAllData() }
         // readAllUsersData = userRepository.readAllUsers()
     }
 

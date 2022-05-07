@@ -33,16 +33,12 @@ class UserAddFragment : Fragment() {
         // variables
         val btnAddUser = view.findViewById<Button>(R.id.btnAddUser)
 
-        /*
         btnAddUser.setOnClickListener {
             insertUserDataToDatabase()
         }
-
-         */
-
         return view
     }
-    /*
+
 private fun insertUserDataToDatabase() {
     // variables
     val etUserFirstName = view?.findViewById<EditText>(R.id.etUserFirstName)
@@ -55,7 +51,7 @@ private fun insertUserDataToDatabase() {
 
 
     if (inputCheck(firstName, lastName, email)) {
-        // Create user object if it's true
+        // Create user object
         val user = User(0, firstName, lastName, email)
         // Add data to the database
         saveUser(user)
@@ -63,14 +59,12 @@ private fun insertUserDataToDatabase() {
         // Navigate back to the list
         findNavController().navigate(R.id.action_userAddFragment_to_usersListFragment)
     } else {
-        Toast.makeText(requireContext(), "Prosím, vyplňte všechny údaje.", Toast.LENGTH_LONG)
+        Toast.makeText(requireContext(), "Prosím, vyplňte všechny údaje.", Toast.LENGTH_LONG).show()
     }
-
-
 }
 
 private fun inputCheck(firstName: String, lastName: String, email: String): Boolean {
-    return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && TextUtils.isEmpty(email))
+    return !(TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(email))
 }
 
 private fun saveUser(user: User) {
@@ -80,5 +74,5 @@ private fun saveUser(user: User) {
 
 
     }
-     */
+
 }

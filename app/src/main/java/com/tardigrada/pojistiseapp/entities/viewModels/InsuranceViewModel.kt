@@ -19,6 +19,7 @@ class InsuranceViewModel(application: Application): AndroidViewModel(application
     init {
         val insuranceDao = AppDatabase.getInstance(application).insuranceDao
         insuranceRepository = InsuranceRepository(insuranceDao)
+        suspend { readAllData() }
         // readAllInsurancesData = insuranceRepository.readAllInsurances()
     }
 
@@ -26,6 +27,10 @@ class InsuranceViewModel(application: Application): AndroidViewModel(application
         viewModelScope.launch(Dispatchers.IO) {
             insuranceRepository.addInsurance(insurance)
         }
+    }
+
+    suspend fun readAllData(): List<Insurance> {
+        return insuranceRepository.readAllInsurances()
     }
 
     suspend fun readAllProductWithInsurancesData(productId: Int): List<ProductWithInsurances> {

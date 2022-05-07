@@ -17,4 +17,10 @@ class MainActivity : AppCompatActivity() {
         val navController: NavController = navHostFragment.navController
         setupActionBarWithNavController(navController)
     }
+
+    // to set back "arrow" navigation in head of app
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.fragmentContainerView)
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 }
