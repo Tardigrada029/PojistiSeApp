@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fragments.list.UsersListFragment">
+    tools:context=".fragments.list.ProductsListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvUsersList"
+        android:id="@+id/rvProductsList"
         android:layout_width="409dp"
         android:layout_height="729dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatBtnAddUser"
+        android:id="@+id/floatBtnAddProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"

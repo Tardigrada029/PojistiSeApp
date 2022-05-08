@@ -71,8 +71,5 @@ private fun saveUser(user: User) {
     lifecycleScope.launch {
         userViewModel.addUser(user)
     }
-
-
-    }
-
+}
 }
