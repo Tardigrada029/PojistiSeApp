@@ -1,23 +1,27 @@
 package com.tardigrada.pojistiseapp.entities.repositories
 
+import androidx.lifecycle.LiveData
 import com.tardigrada.pojistiseapp.entities.Insurance
 import com.tardigrada.pojistiseapp.entities.dao.InsuranceDao
-import com.tardigrada.pojistiseapp.entities.relations.ProductWithInsurances
-import com.tardigrada.pojistiseapp.entities.relations.UserWithInsurances
+// import com.tardigrada.pojistiseapp.entities.relations.ProductWithInsurances
+// import com.tardigrada.pojistiseapp.entities.relations.UserWithInsurances
 
 class InsuranceRepository(private val insuranceDao: InsuranceDao) {
 
-    suspend fun  readAllInsurances(): List<Insurance> {
+    fun  readAllInsurances(): LiveData<List<Insurance>> {
         return insuranceDao.getAllInsurances()
     }
 
-    suspend fun readAllInsurancesForUser(userId: Int): List<UserWithInsurances> {
+    /*
+    fun readAllInsurancesForUser(userId: Int): LiveData<List<UserWithInsurances>> {
         return insuranceDao.getUserWithInsurances(userId)
     }
 
-    suspend fun readAllInsurancesForProduct(productId: Int): List<ProductWithInsurances> {
+    fun readAllInsurancesForProduct(productId: Int): LiveData<List<ProductWithInsurances>> {
         return insuranceDao.getProductWithInsurances(productId)
     }
+
+     */
 
     suspend fun addInsurance(insurance: Insurance) {
         insuranceDao.insertInsurance(insurance)

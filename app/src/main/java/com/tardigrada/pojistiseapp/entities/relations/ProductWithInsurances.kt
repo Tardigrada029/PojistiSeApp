@@ -1,5 +1,6 @@
 package com.tardigrada.pojistiseapp.entities.relations
 
+import androidx.lifecycle.LiveData
 import androidx.room.Embedded
 import androidx.room.Relation
 import com.tardigrada.pojistiseapp.entities.Insurance
@@ -12,5 +13,5 @@ data class ProductWithInsurances(
         entityColumn = "productId"
     )
 
-    val insurances: List<Insurance>
+    val insurances: LiveData<List<Insurance>>
 )

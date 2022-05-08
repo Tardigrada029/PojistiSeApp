@@ -1,5 +1,6 @@
 package com.tardigrada.pojistiseapp.entities.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.tardigrada.pojistiseapp.entities.Insurance
 import com.tardigrada.pojistiseapp.entities.relations.ProductWithInsurances
@@ -12,13 +13,16 @@ interface InsuranceDao {
 
     @Transaction
     @Query("SELECT * FROM table_insurance")
-    suspend fun getAllInsurances(): List<Insurance>
+    fun getAllInsurances(): LiveData<List<Insurance>>
 
+    /*
     @Transaction
     @Query("SELECT * FROM table_user WHERE userId = :userId")
-    suspend fun getUserWithInsurances(userId: Int): List<UserWithInsurances>
+    fun getUserWithInsurances(userId: Int): LiveData<List<UserWithInsurances>>
 
     @Transaction
     @Query("SELECT * FROM table_product WHERE productId = :productId")
-    suspend fun getProductWithInsurances(productId: Int): List<ProductWithInsurances>
+    fun getProductWithInsurances(productId: Int): LiveData<List<ProductWithInsurances>>
+
+     */
 }

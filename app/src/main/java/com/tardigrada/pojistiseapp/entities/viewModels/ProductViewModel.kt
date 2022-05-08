@@ -2,6 +2,7 @@ package com.tardigrada.pojistiseapp.entities.viewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.tardigrada.pojistiseapp.entities.AppDatabase
 import com.tardigrada.pojistiseapp.entities.Product
@@ -27,7 +28,7 @@ class ProductViewModel(application: Application): AndroidViewModel(application) 
         }
     }
 
-    suspend fun readAllData(): List<Product> {
+    fun readAllData(): LiveData<List<Product>> {
         return productRepository.readAllProducts()
     }
 }

@@ -1,5 +1,6 @@
 package com.tardigrada.pojistiseapp.entities.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.tardigrada.pojistiseapp.entities.Product
 
@@ -10,5 +11,5 @@ interface ProductDao {
 
     @Transaction
     @Query("SELECT * FROM table_product")
-    suspend fun getAllProducts(): List<Product>
+    fun getAllProducts(): LiveData<List<Product>>
 }

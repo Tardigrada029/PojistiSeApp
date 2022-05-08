@@ -1,5 +1,6 @@
 package com.tardigrada.pojistiseapp.entities.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.tardigrada.pojistiseapp.entities.User
 
@@ -10,5 +11,5 @@ interface UserDao {
 
     @Transaction
     @Query("SELECT * FROM table_user")
-    suspend fun getAllUsers(): List<User>
+    fun getAllUsers(): LiveData<List<User>>
 }
