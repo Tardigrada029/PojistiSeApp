@@ -36,6 +36,12 @@ class InsuranceViewModel(application: Application): AndroidViewModel(application
         }
     }
 
+    fun deleteInsurance(insurance: Insurance) {
+        viewModelScope.launch(Dispatchers.IO) {
+            insuranceRepository.deleteInsurance(insurance)
+        }
+    }
+
     fun readAllData(): LiveData<List<Insurance>> {
         return insuranceRepository.readAllInsurances()
     }

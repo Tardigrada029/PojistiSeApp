@@ -52,7 +52,7 @@ class UserUpdateFragment : Fragment() {
         }
 
         btnDeleteUser.setOnClickListener {
-            deleteUser()
+            deleteItem()
         }
 
         return view
@@ -80,7 +80,7 @@ class UserUpdateFragment : Fragment() {
         return !(TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(email))
     }
 
-    private fun deleteUser() {
+    private fun deleteItem() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Ano") { _, _ ->
             mUserViewModel.deleteUser(args.currentUser)

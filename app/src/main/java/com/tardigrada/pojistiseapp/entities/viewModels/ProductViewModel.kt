@@ -1,6 +1,7 @@
 package com.tardigrada.pojistiseapp.entities.viewModels
 
 import android.app.Application
+import androidx.compose.runtime.DisposableEffect
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -32,6 +33,12 @@ class ProductViewModel(application: Application): AndroidViewModel(application) 
     fun updateProduct(product: Product) {
         viewModelScope.launch(Dispatchers.IO) {
             productRepository.updateProduct(product)
+        }
+    }
+
+    fun deleteProduct(product: Product) {
+        viewModelScope.launch(Dispatchers.IO) {
+            productRepository.deleteProduct(product)
         }
     }
 

@@ -14,6 +14,9 @@ interface InsuranceDao {
     @Update
     suspend fun updateInsurance(insurance: Insurance)
 
+    @Delete
+    suspend fun deleteInsurance(insurance: Insurance)
+
     @Transaction
     @Query("SELECT * FROM table_insurance")
     fun getAllInsurances(): LiveData<List<Insurance>>

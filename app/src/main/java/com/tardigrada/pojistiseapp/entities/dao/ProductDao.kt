@@ -12,6 +12,9 @@ interface ProductDao {
     @Update
     suspend fun updateProduct(product: Product)
 
+    @Delete
+    suspend fun deleteProduct(product: Product)
+
     @Transaction
     @Query("SELECT * FROM table_product")
     fun getAllProducts(): LiveData<List<Product>>

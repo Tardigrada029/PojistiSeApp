@@ -30,4 +30,8 @@ class InsuranceRepository(private val insuranceDao: InsuranceDao) {
     suspend fun updateInsurance(insurance: Insurance) {
         insuranceDao.updateInsurance(insurance)
     }
+
+    suspend fun deleteInsurance(insurance: Insurance) {
+        insuranceDao.deleteInsurance(insurance)
+    }
 }
