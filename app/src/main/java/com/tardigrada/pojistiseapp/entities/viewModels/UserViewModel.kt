@@ -36,4 +36,10 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     fun readAllData(): LiveData<List<User>> {
         return userRepository.readAllUsers()
     }
+
+    fun deleteUser(user: User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            userRepository.deleteUser(user)
+        }
+    }
 }

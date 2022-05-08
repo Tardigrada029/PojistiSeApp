@@ -1,5 +1,6 @@
 package com.tardigrada.pojistiseapp.fragments.update
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -26,6 +27,7 @@ class UserUpdateFragment : Fragment() {
     private lateinit var etUserUpdateLastName: EditText
     private lateinit var etUserUpdateEmail: EditText
     private lateinit var btnUpdateUser: Button
+    private lateinit var btnDeleteUser: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +41,7 @@ class UserUpdateFragment : Fragment() {
         etUserUpdateLastName = view.findViewById(R.id.etUserUpdateLastName)
         etUserUpdateEmail = view.findViewById(R.id.etUserUpdateEmail)
         btnUpdateUser = view.findViewById(R.id.btnUpdateUser)
+        btnDeleteUser = view.findViewById(R.id.btnDeleteUser)
 
         etUserUpdateFirstName.setText(args.currentUser.firstName)
         etUserUpdateLastName.setText(args.currentUser.lastName)
@@ -46,6 +49,10 @@ class UserUpdateFragment : Fragment() {
 
         btnUpdateUser.setOnClickListener {
             updateItem()
+        }
+
+        btnDeleteUser.setOnClickListener {
+            deleteUser()
         }
 
         return view
@@ -71,5 +78,18 @@ class UserUpdateFragment : Fragment() {
 
     private fun inputCheck(firstName: String, lastName: String, email: String): Boolean {
         return !(TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(email))
+    }
+
+    private fun deleteUser() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Ano") { _, _ ->
+            mUserViewModel.deleteUser(args.currentUser)
+            Toast.makeText(requireContext(), "Uživatel ${args.currentUser.firstName} ${args.currentUser.lastName} byl vymazán.", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_userUpdateFragment_to_usersListFragment)
+        }
+        builder.setNegativeButton("Ne") { _, _ -> }
+        builder.setTitle("Vymazat klienta ${args.currentUser.firstName} ${args.currentUser.lastName}?")
+        builder.setMessage("Jste si jistý, že chcete klienta ${args.currentUser.firstName} ${args.currentUser.lastName} vymazat?")
+        builder.create().show()
     }
 }
