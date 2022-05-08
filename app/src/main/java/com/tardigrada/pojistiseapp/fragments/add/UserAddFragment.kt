@@ -51,6 +51,11 @@ private fun insertUserDataToDatabase() {
 
 
     if (inputCheck(firstName, lastName, email)) {
+        // e-mail check
+        if (!emailCheck(email)) {
+            Toast.makeText(requireContext(), "Vložte e-mail v správném formátu.", Toast.LENGTH_LONG).show()
+            return
+        }
         // Create user object
         val user = User(0, firstName, lastName, email)
         // Add data to the database
@@ -66,6 +71,10 @@ private fun insertUserDataToDatabase() {
 private fun inputCheck(firstName: String, lastName: String, email: String): Boolean {
     return !(TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(email))
 }
+
+    private fun emailCheck(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
 
 private fun saveUser(user: User) {
     lifecycleScope.launch {

@@ -64,6 +64,11 @@ class UserUpdateFragment : Fragment() {
         val email = etUserUpdateEmail.text.toString()
 
         if (inputCheck(firstName, lastName, email)) {
+            // e-mail check
+            if (!emailCheck(email)) {
+                Toast.makeText(requireContext(), "Vložte e-mail v správném formátu.", Toast.LENGTH_LONG).show()
+                return
+            }
             // create user object
             val updatedUser = User(args.currentUser.userId, firstName, lastName, email)
             // update current user
@@ -78,6 +83,10 @@ class UserUpdateFragment : Fragment() {
 
     private fun inputCheck(firstName: String, lastName: String, email: String): Boolean {
         return !(TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(email))
+    }
+
+    private fun emailCheck(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     private fun deleteItem() {
