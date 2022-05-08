@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_usersListFragment_to_indexFragment"
             app:destination="@id/indexFragment" />
+        <action
+            android:id="@+id/action_usersListFragment_to_userUpdateFragment"
+            app:destination="@id/userUpdateFragment" />
     </fragment>
     <fragment
         android:id="@+id/userAddFragment"
@@ -82,5 +85,17 @@
         <action
             android:id="@+id/action_insuranceAddFragment_to_insurancesListFragment"
             app:destination="@id/insurancesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userUpdateFragment"
+        android:name="com.tardigrada.pojistiseapp.fragments.update.UserUpdateFragment"
+        android:label="Upravit klienta"
+        tools:layout="@layout/fragment_user_update" >
+        <action
+            android:id="@+id/action_userUpdateFragment_to_usersListFragment"
+            app:destination="@id/usersListFragment" />
+        <argument
+            android:name="currentUser"
+            app:argType="com.tardigrada.pojistiseapp.entities.User" />
     </fragment>
 </navigation>

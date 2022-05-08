@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.tardigrada.pojistiseapp.R
 import com.tardigrada.pojistiseapp.entities.User
@@ -16,6 +18,7 @@ class UserListAdapter: RecyclerView.Adapter<UserListAdapter.MyViewHolder>() {
         val tvUserFirstName = itemView.findViewById<TextView>(R.id.tvUserFirstName)
         val tvUserLastName = itemView.findViewById<TextView>(R.id.tvUserLastName)
         val tvUserEmail = itemView.findViewById<TextView>(R.id.tvUserEmail)
+        val userRowLayout = itemView.findViewById<ConstraintLayout>(R.id.userRowLayout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -27,6 +30,11 @@ class UserListAdapter: RecyclerView.Adapter<UserListAdapter.MyViewHolder>() {
         holder.tvUserFirstName.text = currentItem.firstName
         holder.tvUserLastName.text = currentItem.lastName
         holder.tvUserEmail.text = currentItem.email
+
+        holder.userRowLayout.setOnClickListener {
+            val action = UsersListFragmentDirections.actionUsersListFragmentToUserUpdateFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
