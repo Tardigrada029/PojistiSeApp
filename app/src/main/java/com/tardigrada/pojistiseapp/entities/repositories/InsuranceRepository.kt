@@ -8,7 +8,7 @@ import com.tardigrada.pojistiseapp.entities.dao.InsuranceDao
 
 class InsuranceRepository(private val insuranceDao: InsuranceDao) {
 
-    fun  readAllInsurances(): LiveData<List<Insurance>> {
+    fun readAllInsurances(): LiveData<List<Insurance>> {
         return insuranceDao.getAllInsurances()
     }
 

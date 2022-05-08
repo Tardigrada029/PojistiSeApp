@@ -14,14 +14,13 @@ import kotlinx.coroutines.launch
 
 class InsuranceViewModel(application: Application): AndroidViewModel(application) {
 
-    // private val readAllInsurancesData: List<Insurance>
+    private val readAllInsurancesData: LiveData<List<Insurance>>
     private val insuranceRepository: InsuranceRepository
 
     init {
         val insuranceDao = AppDatabase.getInstance(application).insuranceDao
         insuranceRepository = InsuranceRepository(insuranceDao)
-        suspend { readAllData() }
-        // readAllInsurancesData = insuranceRepository.readAllInsurances()
+        readAllInsurancesData = insuranceRepository.readAllInsurances()
     }
 
     fun addInsurance(insurance: Insurance) {
