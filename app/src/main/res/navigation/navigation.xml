@@ -3,13 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/usersListFragment">
+    app:startDestination="@id/indexFragment">
 
     <fragment
         android:id="@+id/indexFragment"
         android:name="com.tardigrada.pojistiseapp.IndexFragment"
         android:label="Domov"
-        tools:layout="@layout/fragment_index" />
+        tools:layout="@layout/fragment_index" >
+        <action
+            android:id="@+id/action_indexFragment_to_insurancesListFragment"
+            app:destination="@id/insurancesListFragment" />
+        <action
+            android:id="@+id/action_indexFragment_to_productsListFragment"
+            app:destination="@id/productsListFragment" />
+        <action
+            android:id="@+id/action_indexFragment_to_usersListFragment"
+            app:destination="@id/usersListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/usersListFragment"
         android:name="com.tardigrada.pojistiseapp.fragments.list.UsersListFragment"
@@ -18,6 +28,9 @@
         <action
             android:id="@+id/action_usersListFragment_to_userAddFragment"
             app:destination="@id/userAddFragment" />
+        <action
+            android:id="@+id/action_usersListFragment_to_indexFragment"
+            app:destination="@id/indexFragment" />
     </fragment>
     <fragment
         android:id="@+id/userAddFragment"
@@ -45,6 +58,9 @@
         <action
             android:id="@+id/action_productsListFragment_to_productAddFragment"
             app:destination="@id/productAddFragment" />
+        <action
+            android:id="@+id/action_productsListFragment_to_indexFragment"
+            app:destination="@id/indexFragment" />
     </fragment>
     <fragment
         android:id="@+id/insurancesListFragment"
@@ -54,6 +70,9 @@
         <action
             android:id="@+id/action_insurancesListFragment_to_insuranceAddFragment"
             app:destination="@id/insuranceAddFragment" />
+        <action
+            android:id="@+id/action_insurancesListFragment_to_indexFragment"
+            app:destination="@id/indexFragment" />
     </fragment>
     <fragment
         android:id="@+id/insuranceAddFragment"
