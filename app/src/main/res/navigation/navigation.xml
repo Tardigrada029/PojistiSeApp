@@ -64,6 +64,9 @@
         <action
             android:id="@+id/action_productsListFragment_to_indexFragment"
             app:destination="@id/indexFragment" />
+        <action
+            android:id="@+id/action_productsListFragment_to_productUpdateFragment"
+            app:destination="@id/productUpdateFragment" />
     </fragment>
     <fragment
         android:id="@+id/insurancesListFragment"
@@ -76,6 +79,9 @@
         <action
             android:id="@+id/action_insurancesListFragment_to_indexFragment"
             app:destination="@id/indexFragment" />
+        <action
+            android:id="@+id/action_insurancesListFragment_to_insuranceUpdateFragment"
+            app:destination="@id/insuranceUpdateFragment" />
     </fragment>
     <fragment
         android:id="@+id/insuranceAddFragment"
@@ -97,5 +103,29 @@
         <argument
             android:name="currentUser"
             app:argType="com.tardigrada.pojistiseapp.entities.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/productUpdateFragment"
+        android:name="com.tardigrada.pojistiseapp.fragments.update.ProductUpdateFragment"
+        android:label="fragment_product_update"
+        tools:layout="@layout/fragment_product_update" >
+        <action
+            android:id="@+id/action_productUpdateFragment_to_productsListFragment"
+            app:destination="@id/productsListFragment" />
+        <argument
+            android:name="currentProduct"
+            app:argType="com.tardigrada.pojistiseapp.entities.Product" />
+    </fragment>
+    <fragment
+        android:id="@+id/insuranceUpdateFragment"
+        android:name="com.tardigrada.pojistiseapp.fragments.update.InsuranceUpdateFragment"
+        android:label="fragment_insurance_update"
+        tools:layout="@layout/fragment_insurance_update" >
+        <action
+            android:id="@+id/action_insuranceUpdateFragment_to_insurancesListFragment"
+            app:destination="@id/insurancesListFragment" />
+        <argument
+            android:name="currentInsurance"
+            app:argType="com.tardigrada.pojistiseapp.entities.Insurance" />
     </fragment>
 </navigation>

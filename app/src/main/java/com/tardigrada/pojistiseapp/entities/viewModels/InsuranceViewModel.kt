@@ -24,13 +24,19 @@ class InsuranceViewModel(application: Application): AndroidViewModel(application
         // readAllInsurancesData = insuranceRepository.readAllInsurances()
     }
 
-    suspend fun addInsurance(insurance: Insurance) {
+    fun addInsurance(insurance: Insurance) {
         viewModelScope.launch(Dispatchers.IO) {
             insuranceRepository.addInsurance(insurance)
         }
     }
 
-    suspend fun readAllData(): LiveData<List<Insurance>> {
+    fun updateInsurance(insurance: Insurance) {
+        viewModelScope.launch(Dispatchers.IO) {
+            insuranceRepository.updateInsurance(insurance)
+        }
+    }
+
+    fun readAllData(): LiveData<List<Insurance>> {
         return insuranceRepository.readAllInsurances()
     }
 

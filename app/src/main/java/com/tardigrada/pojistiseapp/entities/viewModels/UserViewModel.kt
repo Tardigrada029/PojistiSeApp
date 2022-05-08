@@ -21,7 +21,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         // readAllUsersData = userRepository.readAllUsers()
     }
 
-    suspend fun addUser(user: User) {
+    fun addUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
             userRepository.addUser(user)
         }

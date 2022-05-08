@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.tardigrada.pojistiseapp.entities.AppDatabase
 import com.tardigrada.pojistiseapp.entities.Product
+import com.tardigrada.pojistiseapp.entities.User
 import com.tardigrada.pojistiseapp.entities.repositories.ProductRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,9 +23,15 @@ class ProductViewModel(application: Application): AndroidViewModel(application) 
         // readAllProductsData = productRepository.readAllProducts()
     }
 
-    suspend fun addProduct(product: Product) {
+    fun addProduct(product: Product) {
         viewModelScope.launch(Dispatchers.IO) {
             productRepository.addProduct(product)
+        }
+    }
+
+    fun updateProduct(product: Product) {
+        viewModelScope.launch(Dispatchers.IO) {
+            productRepository.updateProduct(product)
         }
     }
 
