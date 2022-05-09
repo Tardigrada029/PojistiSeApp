@@ -19,7 +19,7 @@ class IndexFragment : Fragment() {
         // variables
         val btnUsers = view.findViewById<Button>(R.id.btnUsers)
         val btnProducts = view.findViewById<Button>(R.id.btnProducts)
-        val btnInsurances = view.findViewById<Button>(R.id.btnInsurances)
+        // val btnInsurances = view.findViewById<Button>(R.id.btnInsurances)
 
         btnUsers.setOnClickListener {
             findNavController().navigate(R.id.action_indexFragment_to_usersListFragment)
@@ -29,9 +29,12 @@ class IndexFragment : Fragment() {
             findNavController().navigate(R.id.action_indexFragment_to_productsListFragment)
         }
 
+        /*
         btnInsurances.setOnClickListener {
             findNavController().navigate(R.id.action_indexFragment_to_insurancesListFragment)
         }
+        
+         */
 
         return view
     }
